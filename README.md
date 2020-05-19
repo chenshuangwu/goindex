@@ -30,6 +30,9 @@ Demo: https://yanzai-goindex.java.workers.dev
 
 ## 更新日志
 
+### 2020-5-19
+- 使用 [西瓜播放器](https://github.com/bytedance/xgplayer) 替换原生视频播放器，可倍速播放、旋转视频、小窗播放。
+
 ### 2020-4-28
 
 - 添加 Basic Auth 认证，每个盘符可单独配置用户名和密码，可以保护该盘下所有子文件和子文件夹
