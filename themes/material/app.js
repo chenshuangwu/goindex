@@ -1,6 +1,6 @@
 // 在head 中 加载 必要静态
 document.write('<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/mdui@0.4.3/dist/css/mdui.min.css">');
-document.write('<script src="//cdn.jsdelivr.net/npm/xgplayer/browser/index.js" type="text/javascript"></script>')
+document.write('<script src="//cdn.jsdelivr.net/npm/xgplayer@2.6.25/browser/index.js" type="text/javascript"></script>')
 // markdown支持
 document.write('<script src="//cdn.jsdelivr.net/npm/markdown-it@10.0.0/dist/markdown-it.min.js"></script>');
 document.write('<style>.mdui-appbar .mdui-toolbar{height:56px;font-size:1pc}.mdui-toolbar>*{padding:0 6px;margin:0 2px}.mdui-toolbar>i{opacity:.5}.mdui-toolbar>.mdui-typo-headline{padding:0 1pc 0 0}.mdui-toolbar>i{padding:0}.mdui-toolbar>a:hover,a.active,a.mdui-typo-headline{opacity:1}.mdui-container{max-width:980px}.mdui-list-item{transition:none}.mdui-list>.th{background-color:initial}.mdui-list-item>a{width:100%;line-height:3pc}.mdui-list-item{margin:2px 0;padding:0}.mdui-toolbar>a:last-child{opacity:1}@media screen and (max-width:980px){.mdui-list-item .mdui-text-right{display:none}.mdui-container{width:100%!important;margin:0}.mdui-toolbar>.mdui-typo-headline,.mdui-toolbar>a:last-child,.mdui-toolbar>i:first-child{display:block}}</style>');
@@ -789,10 +789,7 @@ function file_video(path) {
   const content = `
 <div class="mdui-container-fluid">
   <br>
-  <div id="video"></div>
-	// <video class="mdui-video-fluid mdui-center" preload controls>
-	//   <source src="${url}" type="video/mp4">
-	// </video>
+  <div id="video" class="mdui-video-fluid mdui-center"></div>
 	<br>${playBtn}
 	<!-- 固定标签 -->
 	<div class="mdui-textfield">
@@ -810,7 +807,18 @@ function file_video(path) {
 
   let player = new Player({
     id: 'video',
-    url: url
+    url: url,
+    fluid: true,
+    videoInit: true,
+    playbackRate: [0.5, 0.75, 1, 1.5, 2],
+    rotate: {   //视频旋转按钮配置项
+      innerRotate: true, //只旋转内部video
+      clockwise: false // 旋转方向是否为顺时针
+    },
+    download: true, //设置download控件显示
+    pip: true, //画中画
+    cssFullscreen: true, //网页样式全屏
+    keyShortcut: 'on', // 键盘快捷键
   });
   
   $('#copy-link').on('click', () => {
